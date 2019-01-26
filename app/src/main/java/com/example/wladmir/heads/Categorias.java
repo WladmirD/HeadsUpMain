@@ -94,7 +94,7 @@ public class Categorias extends AppCompatActivity {
                     score = score+10;
                     correctSound.start();
 
-                }else if (sensorEvent.values[1] == 0)
+                }else if (sensorEvent.values[0] > 0.5f)
                 {
                     getWindow().getDecorView().setBackgroundColor(Color.GREEN);
                 }
