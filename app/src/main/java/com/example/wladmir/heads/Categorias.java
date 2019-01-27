@@ -21,7 +21,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Categorias extends AppCompatActivity {
-    public int counter = 30;
+    public int counter = 35;
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroscopeEventListener;
@@ -56,7 +56,7 @@ public class Categorias extends AppCompatActivity {
 
         final TextView textTimer = findViewById(R.id.textViewtimer);
 
-        new CountDownTimer(31000, 1000){
+        new CountDownTimer(36000, 1000){
 
             public void onTick(long millisUntilFinished){
                 textTimer.setText(String.valueOf(counter));
