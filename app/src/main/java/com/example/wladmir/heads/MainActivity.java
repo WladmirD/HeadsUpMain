@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -29,13 +30,19 @@ public class MainActivity extends AppCompatActivity {
     public void CatPeliculas(View view)
     {
 
-        List<String> Peliculas = Arrays.asList("Avengers", "Aquaman", "Jurassic Park", "Spider Man", "Thor");
+        //List<String> Peliculas = Arrays.asList("Avengers", "Aquaman", "Jurassic Park", "Spider Man", "Thor");
+        ArrayList<String> listTest = new ArrayList<String>();
+        listTest.add("Avengers");
+        listTest.add("Aquaman");
+        listTest.add("Jurassic Park");
+        listTest.add("Spider Man");
+        listTest.add("Thor");
         Intent intent = new Intent(this, Categorias.class);
 
-        int randomInd = rand.nextInt(Peliculas.size());
-        String randomWord = Peliculas.get(randomInd);
-        String message = randomWord;
-        intent.putExtra(EXTRA_MESSAGE, message);
+       // int randomInd = rand.nextInt(Peliculas.size());
+       // String randomWord = Peliculas.get(randomInd);
+        //String message = randomWord;
+        intent.putExtra("Test", listTest);
         startActivity(intent);
         finish();
 

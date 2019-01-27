@@ -15,10 +15,13 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Categorias extends AppCompatActivity {
-    public int counter=10;
+    public int counter = 10;
     private SensorManager sensorManager;
     private Sensor gyroscopeSensor;
     private SensorEventListener gyroscopeEventListener;
@@ -26,21 +29,27 @@ public class Categorias extends AppCompatActivity {
     public static final String EXTRA_MESSAGE2 = "com.example.wladmir.MESSAGE";
     public int score = 0;
 
+    Random rand = new Random();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categorias);
+        
+        final ArrayList<String> listTest = (ArrayList<String>) getIntent().getSerializableExtra("Test");
 
 
-        Intent intentCat = getIntent();
-        final String message = intentCat.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
 
 
         final TextView textView = findViewById(R.id.textViewCategorias);
-        textView.setText(message);
+
         final Intent intentFinal = new Intent(Categorias.this, GameOver.class);
+        final int randomInd = rand.nextInt(listTest.size());
+        final String randomWord = listTest.get(randomInd);
+        textView.setText(randomWord);
 
 
 
@@ -80,16 +89,21 @@ public class Categorias extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
 
-                if(sensorEvent.values[1] > 5.3f)
+                if(sensorEvent.values[1] > 6.3f)
                 {
-                    textView.setText(message);
+                    int randomInd = rand.nextInt(listTest.size());
+                    String randomWord = listTest.get(randomInd);
+
+                    textView.setText(randomWord);
                     getWindow().getDecorView().setBackgroundColor(Color.BLUE);
                     incorrectSound.start();
 
 
-                }else if (sensorEvent.values[1] < -5.3f)
+                }else if (sensorEvent.values[1] < -6.3f)
                 {
-                    textView.setText(message);
+                    int randomInd = rand.nextInt(listTest.size());
+                    String randomWord = listTest.get(randomInd);
+                    textView.setText(randomWord);
                     getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                     score = score+10;
                     correctSound.start();
