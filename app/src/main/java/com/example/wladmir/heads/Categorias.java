@@ -37,7 +37,7 @@ public class Categorias extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categorias);
-        
+
         final ArrayList<String> listTest = (ArrayList<String>) getIntent().getSerializableExtra("Test");
 
 
@@ -89,7 +89,7 @@ public class Categorias extends AppCompatActivity {
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
 
-                if(sensorEvent.values[1] > 6.3f)
+                if((sensorEvent.values[1] > 6.3f) && (sensorEvent.values[1] < 7.7f) )
                 {
                     int randomInd = rand.nextInt(listTest.size());
                     String randomWord = listTest.get(randomInd);
@@ -99,7 +99,8 @@ public class Categorias extends AppCompatActivity {
                     incorrectSound.start();
 
 
-                }else if (sensorEvent.values[1] < -6.3f)
+
+                }else if ((sensorEvent.values[1] < -6.3f) && (sensorEvent.values[1] > -7.7f))
                 {
                     int randomInd = rand.nextInt(listTest.size());
                     String randomWord = listTest.get(randomInd);
@@ -107,6 +108,7 @@ public class Categorias extends AppCompatActivity {
                     getWindow().getDecorView().setBackgroundColor(Color.YELLOW);
                     score = score+10;
                     correctSound.start();
+
 
                 }else if (sensorEvent.values[0] > 0.5f)
                 {
