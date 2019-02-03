@@ -77,6 +77,17 @@ public class Categorias extends AppCompatActivity {
         }.start();
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+        /*new CountDownTimer(1000, 1000){
+
+            public void onTick(long millisUntilFinished){
+
+            }
+            public  void onFinish(){
+
+
+
+            }
+        }.start();*/
 
         if (gyroscopeSensor == null)
         {
